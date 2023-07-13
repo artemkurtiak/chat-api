@@ -1,4 +1,4 @@
-import { CanActivate, ExecutionContext, Injectable, UseFilters, UseGuards } from '@nestjs/common';
+import { UseFilters, UseGuards } from '@nestjs/common';
 import {
   ConnectedSocket,
   MessageBody,
@@ -6,7 +6,6 @@ import {
   WebSocketGateway,
 } from '@nestjs/websockets';
 
-import { Observable } from 'rxjs';
 import { Socket } from 'socket.io';
 
 import { ChatService } from './chat.service';

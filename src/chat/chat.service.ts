@@ -10,5 +10,6 @@ import { OnMessageBodyDto } from './dtos/body/on-message.body-dto';
 export class ChatService extends DatabaseService {
   onMessage(socket: Socket, body: OnMessageBodyDto) {
     const { groupId, text } = body;
+    console.log(groupId, text);
   }
 }

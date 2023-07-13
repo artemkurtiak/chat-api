@@ -1,6 +1,6 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 
-import { ILike, In, Not, SelectQueryBuilder } from 'typeorm';
+import { ILike, SelectQueryBuilder } from 'typeorm';
 
 import { DatabaseService } from '@shared/database/services/database.service';
 
