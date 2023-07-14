@@ -65,32 +65,4 @@ export class GroupController {
   getGroup(@Param() params: GetGroupItemParamsDto, @Ctx('userId') userId: number) {
     return this.groupService.getGroup(params.groupId, userId);
   }
-
-  @Post('/:groupId/join')
-  @ApiCreatedResponse({
-    description: 'Successful group joinment',
-  })
-  @ApiConflictResponse({
-    description: 'You are already a participant of group',
-  })
-  @ApiOperation({
-    summary: 'Join group',
-  })
-  joinGroup(@Param() params: GetGroupItemParamsDto, @Ctx('userId') userId: number) {
-    return this.groupService.joinGroup(params.groupId, userId);
-  }
-
-  @Post('/:groupId/leave')
-  @ApiCreatedResponse({
-    description: 'Successful group leaving',
-  })
-  @ApiNotFoundResponse({
-    description: 'You are not participant of that group',
-  })
-  @ApiOperation({
-    summary: 'Leave group',
-  })
-  leaveGroup(@Param() params: GetGroupItemParamsDto, @Ctx('userId') userId: number) {
-    return this.groupService.leaveGroup(params.groupId, userId);
-  }
 }
