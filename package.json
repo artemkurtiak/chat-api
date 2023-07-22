@@ -34,6 +34,7 @@
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
     "dotenv-expand": "^10.0.0",
+    "jsonwebtoken": "^9.0.1",
     "pg": "^8.11.1",
     "pluralize": "^8.0.0",
     "reflect-metadata": "^0.1.13",
