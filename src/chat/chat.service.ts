@@ -24,8 +24,10 @@ export class ChatService extends DatabaseService {
   async onMessage(body: SocketEventPayload<OnMessageBodyDto>) {
     const { groupId, text, userId, server } = body;
     const user = await this.database.users.findOneOrFail({ where: { id: userId } });
+    await this.database.userToGroups.findOneOrFail({ where: { groupId, userId } });
+    const message = await this.database.messages.create({ groupId, text, userId });
 
-    server.to(`${groupId}`).emit('message', { text, user, groupId });
+    server.to(`${groupId}`).emit('message', { ...message, user });
   }
 
   async onLeave(body: SocketEventPayload<OnLeaveBodyDto>) {

@@ -57,7 +57,7 @@ export class GroupService extends DatabaseService {
         userToGroups: { user: true },
         messages: { user: true },
       },
-      order: { messages: { createdAt: 'DESC' } },
+      order: { messages: { createdAt: 'ASC' } },
     });
     const isMember = group.userToGroups!.some((item) => item.userId === userId);
 

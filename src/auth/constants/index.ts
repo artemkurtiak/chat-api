@@ -4,6 +4,7 @@ import { Environment } from '@shared/variables/environment';
 
 const DefaultCookieOptions: CookieOptions = {
   httpOnly: true,
+  sameSite: 'strict',
   secure: Environment.NODE_ENV === 'PROD',
 };
 

@@ -1,6 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 import { AuthenticationCookiesType } from '@shared/common/types';
+import { compare } from 'bcryptjs';
 
 import { DatabaseService } from '@shared/database/services/database.service';
 
@@ -26,6 +27,11 @@ export class AuthService extends DatabaseService {
   // login
   async login(body: LoginBodyDto) {
     const user = await this.database.users.findOneOrFail({ where: { email: body.email } });
+
+    const isPasswordMatched = await compare(body.password, user.password);
+
+    if (!isPasswordMatched) throw new UnauthorizedException('Invalid credentials');
+
     const accessToken = await this.database.accessTokens.create({ userId: user.id });
     const refreshToken = await this.database.refreshTokens.create({
       userId: user.id,
